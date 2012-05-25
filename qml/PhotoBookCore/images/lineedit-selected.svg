@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   id="svg4249"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="lineedit.svg">
+  <defs
+     id="defs4251">
+    <filter
+       inkscape:collect="always"
+       id="filter4900">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="6.75"
+         id="feGaussianBlur4902" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4904">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="6.75"
+         id="feGaussianBlur4906" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="329.08255"
+     inkscape:cy="626.20125"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1141"
+     inkscape:window-height="768"
+     inkscape:window-x="566"
+     inkscape:window-y="63"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata4254">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:none;fill-opacity:0.11355310000000000;stroke:#2877ce;stroke-opacity:1;stroke-width:2.9999999;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter4900)"
+       id="rect4257"
+       width="250"
+       height="250"
+       x="207.5"
+       y="349.14789"
+       ry="33.854164"
+       inkscape:export-filename="/home/daniel/code/photobook/qml/PhotoBookCore/images/lineedit.png"
+       inkscape:export-xdpi="9.46"
+       inkscape:export-ydpi="9.46" />
+    <rect
+       style="fill:none;fill-opacity:0.11355310000000000;stroke:#2877ce;stroke-opacity:1;stroke-width:2.9999999;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter4904)"
+       id="rect4257-9"
+       width="250"
+       height="250"
+       x="207.5"
+       y="349.14789"
+       ry="33.854164"
+       inkscape:export-filename="/home/daniel/code/photobook/qml/PhotoBookCore/images/lineedit.png"
+       inkscape:export-xdpi="9.46"
+       inkscape:export-ydpi="9.46" />
+  </g>
+</svg>
