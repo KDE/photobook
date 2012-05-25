@@ -60,6 +60,7 @@ public:
     Q_INVOKABLE void setRole(const QString &role);
     Q_INVOKABLE void setDevice(const QString &udi);
     Q_INVOKABLE void setSelected(int index, bool selected);
+    Q_INVOKABLE void select(int index);
     Q_INVOKABLE void clearSelection();
 
 private Q_SLOTS:

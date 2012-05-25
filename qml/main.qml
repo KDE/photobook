@@ -143,7 +143,6 @@ Item {
                     cellHeight: 150
                     focus:  true
                     model: albumVisualModel.parts.event
-                    highlight: Rectangle { color: "lightsteelblue"; radius: 5 ; z: -1 }
                     onCurrentIndexChanged: {
                         photosListView.positionViewAtIndex(currentIndex, ListView.Contain);
                         photosListView.currentIndex = currentIndex;
@@ -168,7 +167,6 @@ Item {
                     cellHeight: 150
                     focus:  true
                     model: albumVisualModel.parts.grid
-                    highlight: Rectangle { color: "lightsteelblue"; radius: 5 ; z: -1 }
                     onCurrentIndexChanged: {
                         photosListView.positionViewAtIndex(currentIndex, ListView.Contain);
                         photosListView.currentIndex = currentIndex;

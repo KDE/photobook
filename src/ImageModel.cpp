@@ -177,6 +177,12 @@ void ImageModel::setSelected(int index, bool selected)
     }
 }
 
+void ImageModel::select(int index)
+{
+    clearSelection();
+    setSelected(index, true);
+}
+
 void ImageModel::clearSelection()
 {
     // Unselect all items

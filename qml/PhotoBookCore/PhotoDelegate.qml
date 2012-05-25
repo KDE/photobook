@@ -90,6 +90,7 @@ Package {
                 console.log("filePath -> "  + filePath);
                 photosGridView.currentIndex = index;
                 photosListView.currentIndex = index;
+                
                 if (albumVisualModel.state == 'inList') {
 //                             listItem.ListView.view.currentIndex = index;
                     albumVisualModel.state = 'inGrid';
@@ -97,6 +98,7 @@ Package {
 //                             gridItem.GridView.view.currentIndex = index;
                     albumVisualModel.state = 'inList';
                 }
+                importVisualModel.model.select(index);
             }
             //             width: parent.paintedWidth
             //             height: parent.paintedHeight
