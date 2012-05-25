@@ -113,6 +113,30 @@ QStringList ImageModel::selected() const
     return ret;
 }
 
+QStringList ImageModel::notImported() const
+{
+    QStringList ret;
+    for (int i = 0; i < rowCount(); ++i) {
+        QStandardItem *it = item(i);
+        if (!it->data(Imported).toBool()) {
+            ret << it->data(FilePath).toString();
+        }
+    }
+    return ret;
+}
+
+int ImageModel::notImportedCount() const
+{
+    int ret = 0;
+    for (int i = 0; i < rowCount(); ++i) {
+        QStandardItem *it = item(i);
+        if (it->data(Imported).toBool()) {
+            ++ret;
+        }
+    }
+    return ret;
+}
+
 void ImageModel::setDevice(const QString &udi)
 {
     kDebug() << udi;
@@ -161,10 +185,6 @@ void ImageModel::clearSelection()
     }
 }
 
-void ImageModel::importSelected(const QString &eventName, bool splitEvents)
-{
-}
-
 void ImageModel::file(const ImageFile &file)
 {
     QFileInfo fileInfo(file.filePath);
@@ -176,6 +196,8 @@ void ImageModel::file(const ImageFile &file)
                 ThumbImage);
     it->setData(file.filePath, FilePath);
     it->setData(false, Selected);
+    // doc_id is 0 if not on the databasse
+    it->setData(static_cast<bool>(file.docId.get_docid()), Imported);
     appendRow(it);
 }
 

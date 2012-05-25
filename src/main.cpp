@@ -29,6 +29,7 @@
 #include <KGlobalSettings>
 #include <KConfig>
 #include <KConfigGroup>
+#include <KStandardDirs>
 
 #include "qmlapplicationviewer.h"
 #include "ImageModel.h"
@@ -73,6 +74,10 @@ int main(int argc, char **argv)
 
     Database::global()->init(picturesPath, false);
 
+    foreach (const QString &importPath, KGlobal::dirs()->findDirs("module", "imports")) {
+        view.engine()->addImportPath(importPath);
+    }
+
     // Image Model
     ImageModel *model = new ImageModel;
     model->init();
@@ -87,7 +92,7 @@ int main(int argc, char **argv)
                                     new ThumbnailProvider(picturesPath));
 
     // Icons provider
-    view.engine()->addImageProvider(QLatin1String("icon"),
+    view.engine()->addImageProvider(QLatin1String("kicon"),
                                     new KIconProvider());
 
     // Image provider

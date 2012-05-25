@@ -21,6 +21,8 @@
 
 #include <KIconLoader>
 
+#include <KDebug>
+
 KIconProvider::KIconProvider() :
     QDeclarativeImageProvider(QDeclarativeImageProvider::Pixmap)
 {

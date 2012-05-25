@@ -188,6 +188,9 @@ void Database::import(const QString &uuid, const QStringList &files, const QStri
             lastImported = datedFile.second;
         }
         kDebug() << eventFiles;
+    } else {
+        // The selection should be imported as one event
+        eventFiles[0] << files;
     }
 
     QDateTime dateTime = QDateTime::currentDateTime();

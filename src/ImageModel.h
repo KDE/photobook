@@ -35,13 +35,16 @@ class ImageModel : public QStandardItemModel
     Q_PROPERTY(QString device READ device WRITE setDevice)
     Q_PROPERTY(QString uuid READ uuid)
     Q_PROPERTY(QStringList selected READ selected)
+    Q_PROPERTY(QStringList notImported READ notImported)
+    Q_PROPERTY(int notImportedCount READ notImportedCount)
 public:
     enum {
         ImageId = Qt::UserRole + 1,
         ThumbImage,
         Selected,
         FilePath,
-        Url
+        Url,
+        Imported
     } ImageRoles;
     explicit ImageModel(QObject *parent = 0);
 
@@ -51,12 +54,13 @@ public:
     QString device() const;
     QString uuid() const;
     QStringList selected() const;
+    QStringList notImported() const;
+    int notImportedCount() const;
 
     Q_INVOKABLE void setRole(const QString &role);
     Q_INVOKABLE void setDevice(const QString &udi);
     Q_INVOKABLE void setSelected(int index, bool selected);
     Q_INVOKABLE void clearSelection();
-    Q_INVOKABLE void importSelected(const QString &eventName, bool splitEvents);
 
 private Q_SLOTS:
     void setIdleState(Solid::ErrorType error, QVariant errorData, const QString &udi);

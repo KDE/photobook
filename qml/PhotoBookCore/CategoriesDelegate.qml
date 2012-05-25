@@ -35,7 +35,7 @@ Item {
             verticalCenter: parent.verticalCenter
         }
         smooth: true;
-        source: "image://icon/" + iconName;
+        source: "image://kicon/" + iconName;
         sourceSize.width: width
         fillMode: Image.PreserveAspectFit;
         visible: isDevice
