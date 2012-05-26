@@ -103,7 +103,10 @@ int main(int argc, char **argv)
     qmlRegisterType<Importer>("org.kde.photobook", 1, 0, "Importer");
 
     view.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
-    view.setMainQmlFile(QLatin1String("qml_files/main.qml"));
+
+    QString file = KGlobal::dirs()->findResource("module", "imports/org/kde/photobook/main.qml" );
+
+    view.setMainQmlFile(file);
     view.showExpanded();
 
     return app.exec();
