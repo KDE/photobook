@@ -35,6 +35,7 @@ public:
         CategoryId = Qt::UserRole + 1,
         CategorySection,
         CategoryUrl,
+        CategoryState,
         CategoryIconName,
         CategoryIsDevice,
         CategoryDeviceNotMounted,

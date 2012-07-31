@@ -22,6 +22,9 @@ import org.kde.photobook 1.0
 
 Item {
     id: delegate
+
+    signal clicked
+
     width: delegate.ListView.view.width
     height: 20
     
@@ -58,26 +61,28 @@ Item {
         
         onClicked: {
             albumVisualModel.state = "inGrid";
+            delegate.ListView.view.currentIndex = index
             // Sets the model's current role
             if (isDevice) {
                 mainView.state = "import";
-                var deviceIndex;
-                for (deviceIndex = 0; deviceIndex < devicesModel.count; ++deviceIndex) {
+//                 var deviceIndex;
+                for (var deviceIndex = 0; deviceIndex < devicesModel.count; ++deviceIndex) {
                     if (devicesModel.get(deviceIndex).url == url) {
                         importVisualModel.model = devicesModel.get(deviceIndex).model;
-                        delegate.ListView.view.currentIndex = index;
                         return;
                     }
                 }
                 var model = Qt.createQmlObject("import org.kde.photobook 1.0; ImageModel{}", devicesModel);
                 model.setDevice(url);
                 devicesModel.append({"url": url, "model": model });
-                importVisualModel.model = devicesModel.get(devicesModel.count - 1).model;
+                importVisualModel.model = model;
+//                 importVisualModel.model = devicesModel.get(devicesModel.count - 1).model;
             } else {
-                mainView.state = "events";
-                imageModel.setRole(url);
+                mainView.state = state;
+                clicked(url);
+//                 model.role = url;
+//                 imageModel.setRole(url);
             }
-            delegate.ListView.view.currentIndex = index
         }
     }
     

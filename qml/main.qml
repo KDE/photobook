@@ -91,9 +91,10 @@ Item {
                     }
                 }
 
-                onCurrentIndexChanged: {
-                    imageModel.setRole(currentIndex);
-                }
+//                 onCurrentIndexChanged: {
+//                     mainView.state = categorySourceModel.get(currentIndex).state;
+//                     imageModel.setRole(currentIndex);
+//                 }
             }
 
             ScrollBar {
@@ -105,7 +106,7 @@ Item {
         VisualDataModel {
             id: albumVisualModel
             property string state: 'inGrid'
-            model: imageModel
+            model: ImageModel {}
             delegate: PhotoDelegate {}
         }
 
@@ -150,10 +151,6 @@ Item {
                     ScrollBar {
                         scrollArea: parent; height: parent.height; width: 10
                         anchors.right: parent.right
-                    }
-                    ListModel {
-                        id: selectionModel
-                        signal modelCleared
                     }
                 }
 

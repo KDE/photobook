@@ -79,9 +79,9 @@ int main(int argc, char **argv)
     }
 
     // Image Model
-    ImageModel *model = new ImageModel;
-    model->init();
-    view.rootContext()->setContextProperty("imageModel", model);
+//    ImageModel *model = new ImageModel;
+//    model->init();
+//    view.rootContext()->setContextProperty("imageModel", model);
 
     // Categories Model
     CategorizedSourcesModel *categoryModel = new CategorizedSourcesModel(0);

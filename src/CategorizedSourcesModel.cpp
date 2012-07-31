@@ -36,6 +36,12 @@ using namespace Solid;
 #define DEVICES    "D"
 #define ALBUMS     "A"
 
+#define STATE_IMPORT "import"
+#define STATE_EVENTS "events"
+#define STATE_PHOTOS "photos"
+#define STATE_PLACES "places"
+#define STATE_FACES  "faces"
+
 CategorizedSourcesModel::CategorizedSourcesModel(QObject *parent) :
     QStandardItemModel(parent)
 {
@@ -43,6 +49,7 @@ CategorizedSourcesModel::CategorizedSourcesModel(QObject *parent) :
     roles[CategoryId] = "role";
     roles[CategorySection] = "section";
     roles[CategoryUrl] = "url";
+    roles[CategoryState] = "state";
     roles[CategoryIconName] = "iconName";
     roles[CategoryIsDevice] = "isDevice";
     roles[CategoryDeviceNotMounted] = "deviceNotMounted";
@@ -71,6 +78,7 @@ void CategorizedSourcesModel::init()
     it->setData(i18n("Collection"), CategorySection);
     it->setData(COLLECTION, CategoryId);
     it->setData("events", CategoryUrl);
+    it->setData(STATE_EVENTS, CategoryState);
     it->setData(false, CategoryIsDevice);
     appendRow(it);
 
@@ -80,6 +88,7 @@ void CategorizedSourcesModel::init()
     it->setData(i18n("Collection"), CategorySection);
     it->setData(COLLECTION, CategoryId);
     it->setData("allphotos", CategoryUrl);
+    it->setData(STATE_PHOTOS, CategoryState);
     it->setData(false, CategoryIsDevice);
     appendRow(it);
 
@@ -89,6 +98,7 @@ void CategorizedSourcesModel::init()
     it->setData(i18n("Collection"), CategorySection);
     it->setData(COLLECTION, CategoryId);
     it->setData("faces", CategoryUrl);
+    it->setData(STATE_FACES, CategoryState);
     it->setData(false, CategoryIsDevice);
     appendRow(it);
 
@@ -98,6 +108,7 @@ void CategorizedSourcesModel::init()
     it->setData(i18n("Collection"), CategorySection);
     it->setData(COLLECTION, CategoryId);
     it->setData("places", CategoryUrl);
+    it->setData(STATE_PLACES, CategoryState);
     it->setData(false, CategoryIsDevice);
     appendRow(it);
 }
@@ -194,21 +205,17 @@ void CategorizedSourcesModel::addDevice(const Device &device)
             // TODO
             kWarning() << device.udi() << "Wow found a SmartCardReader os thuis the storage volume?";
         } else if (device.isDeviceInterface(DeviceInterface::StorageVolume)) {
-            // TODO
-            kWarning() << device.udi() << "Wow found a StorageVolume os thuis the storage volume?";
-            kDebug() << "Parent" << device.parent().udi();
+            // Found a Storage Drive
             if (device.parent().is<Solid::StorageDrive>()) {
                 const Solid::StorageDrive *storagedrive = device.parent().as<Solid::StorageDrive>();
                 if (!storagedrive) {
+                    // Make sure we get a real pointer
                     return;
                 }
 
-                kWarning() << "REMOVABLE?? " << storagedrive->isRemovable();
+                // We are only interested in removable drives
                 removable = storagedrive->isRemovable();
             }
-
-
-
         }
 
         // Only removable media, if the user want's to import files
@@ -240,6 +247,7 @@ void CategorizedSourcesModel::addDevice(const Device &device)
             it->setData(i18n("Devices"), CategorySection);
             it->setData(DEVICES, CategoryId);
             it->setData(device.udi(), CategoryUrl);
+            it->setData(STATE_IMPORT, CategoryState);
             it->setData(device.icon(), CategoryIconName);
             it->setData(true, CategoryIsDevice);
             it->setData(notMounted, CategoryDeviceNotMounted);
